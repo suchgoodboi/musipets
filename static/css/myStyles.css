@@ -2,99 +2,58 @@ html {
   position: relative;
   min-height: 100%;
 }
-
 body {
   font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-bottom: 500px;
+  background-color: rgba(255,3,16,0.02);
+}
+.btn {
+  background-color: rgba(255, 3, 16, 0.59);
+  border-color: rgba(255, 255, 255, 0.59);
+}
+.btn:hover{
+  background-color: rgba(240, 0, 9, 0.69);
+  border-color: rgba(255, 255, 255, 0.59);
 }
 
-/** Home Page Banner **/
-.banner {
-  background: url('../img/background.jpg') no-repeat center;
-  background-size: cover;
-  text-align: center;
-}
-
-.banner .callout {
-  padding-bottom: 180px;
-  padding-top: 250px;
-}
-
-.banner .callout .intro-text {
-  color: #fff;
-  font-size: 6.5rem;
-  text-transform: uppercase;
-}
-
-/** Home **/
-.features {
-  background: url('../img/featuredbg.jpg') no-repeat center;
-  background-size: cover;
-  font-size: 1.6rem;
-  text-align: center;
-}
-
-.feature {
-  padding: 60px;
-}
-
-.c-red {
-  color: red;
-}
-
-.c-green {
-  color: #286B5A;
-}
-
-.c-blue {
-  color: #3a5795;
-}
 
 /** Navbar **/
 .navbar {
-  background-color: #fff;
+  background-color: #880717;
   border: 0;
-  color: #333;
+  color: #fffdfe;
   margin: 0;
   min-height: 100px;
-  transition: all .3s;
 }
-
 .navbar-collapse {
-  background-color: #fff;
-  color: #333;
+  color: #fff6fe;
 }
-
-.navbar.navbar-home {
-  border: 0;
-}
-
 .navbar li a {
   color: inherit;
   font-size: 1.5rem;
   transition: all .3s;
 }
-
 .navbar-brand {
-  color: #333;
-  font-size: 20px;
+  color: #fff6fc;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+  font-size: 60px;
   height: 85px;
   margin: 0 15px;
   padding-top: 50px;
-  text-transform: uppercase;
 }
-
-.navbar-toggle {
-  background-color: #286B5A;
-  margin: 33px;
+.navbar-brand-logo {
+  align-items: center;
 }
-
-.navbar-toggle .icon-bar {
-  background-color: #e9f6f4;
+.navbar-brand-logo img{
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  top: 25px;
+  height: 80px;
 }
-
 .nav > li > a:focus,
 .nav > li > a:hover,
 .nav .open > a,
@@ -102,7 +61,6 @@ body {
 .nav .open > a:hover {
   background-color: #fff;
 }
-
 .navbar-nav li > a:focus,
 .navbar-nav li > a:hover,
 .navbar-nav .open > a,
@@ -113,18 +71,15 @@ body {
 .navbar-brand:focus,
 .navbar-brand:hover {
   color: #fff;
-  background-color: #286B5A;
+  background-color: #880717;
 }
-
 @media (min-width: 768px) {
   .nav > li {
     margin-top: 35px;
   }
-
   .navbar.navbar-home li a {
     color: #fff;
   }
-
   .navbar-home .navbar-brand {
     color: #fff;
   }
@@ -132,11 +87,9 @@ body {
   .navbar.navbar-home {
     background-color: transparent;
   }
-
   .navbar-collapse {
     background-color: inherit;
   }
-
   .navbar li > a:focus,
   .navbar li > a:hover,
   .navbar .open > a,
@@ -146,10 +99,9 @@ body {
   .dropdown-menu > li > a:hover,
   .navbar-brand:focus,
   .navbar-brand:hover {
-    color: #fff;
-    background-color: #286B5A;
+    color: #880717;
+    background-color: #fffdf1;
   }
-
   .navbar-home .nav > li > a:focus,
   .navbar-home .nav > li > a:hover,
   .navbar-home .nav .open > a,
@@ -208,61 +160,43 @@ body {
 }
 
 /** General **/
-.italic {
-  font-style: italic;
-}
-
 .mb-40px {
   margin-bottom: 40px;
 }
-
 .heading {
-  background-color: #286B5A;
+  background-color: rgba(255, 218, 37, 0.09);
   padding: 25px 0;
-  margin-bottom: 30px;
+  margin-bottom: 0;
 }
-
 .heading .title-text {
   font-size: 2.2rem;
-  color: #fff;
+  color: #b50400;
   font-weight: 700;
   margin: 0;
   text-transform: uppercase;
 }
-
 .pagination li a,
 .pagination li a:hover,
 .pagination li a:focus {
   color: #286B5A;
 }
-
 .pagination .active a,
 .pagination .active a:hover,
 .pagination .active a:focus {
   background-color: #286B5A;
   border-color: #286B5A;
 }
-
-/** About **/
-.site-stats {
-  font-size: 2.4rem;
-  font-weight: 500;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
 /** Card Pet **/
 .card-pet {
   margin-bottom: 15px;
 }
-
 .card-pet .title-text {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-
 li.active {
+  background-color: rgba(255, 48, 17, 0.29);
   font-weight: 700;
 }
 
@@ -292,9 +226,9 @@ li.active {
 .footer {
   position: absolute;
   bottom: 0;
-  background-color: #286B5A;
+  background-color: #880717;
   color: #e9f6f4;
-  height: 500px;
+  height: 150px;
   width: 100%;
 }
 
@@ -306,7 +240,7 @@ li.active {
 
 .footer-head {
   color: #fff;
-  background-color: #333;
+  background-color: #680009;
   padding: 30px 0;
 }
 
@@ -334,14 +268,12 @@ li.active {
   position: relative;
   width: 100%; /* for IE 6 */
 }
-
 .found-or-adopted > h2 {
   position: absolute;
   bottom: 33%;
   left: 0;
   width: 100%;
 }
-
 .found-or-adopted > h2 span {
   color: white;
   font: bold 24px/45px Helvetica, Sans-Serif;
@@ -355,29 +287,78 @@ li.active {
   padding: 0 5px;
 }
 
-/** Poster **/
-.page {
-  width: 768px;
-  margin: 0 auto;
+/*****  Profile *****/
+.page{
+  margin-top: 30px;
 }
-
-.print-logo {
-  width: 10%;
+.profile-photo{
+  border-radius: 50%;
+  border: 3px solid #700716;
+  box-shadow: 0 0 7px #555;
+  margin-bottom: 30px;
+  width: 25%;
+  float: left;
 }
-
-.poster-headline {
-  font-size: 6rem;
+.info-block{
+  width: 70%;
+  float: right;
 }
-
-.poster-subheadline {
-  font-size: 2.5rem;
-  font-style: italic;
+.page-block {
+  background: white;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+  padding: 10px;
+  margin: 10px;
 }
-
-.font-1_8rem {
-  font-size: 1.8rem;
+.name{
+  font-family: 'Seymour One', sans-serif;
+  font-size: 30px;
+  padding: 15px;
 }
-
+.user-box{
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  text-align: center;
+}
+.user-box a{
+  color: #610616;
+  font-size: 25px;
+  text-decoration: none;
+}
+.user-box li{
+  margin-right: 30px;
+  list-style-type: none;
+}
+.img-icon{
+  width: 25px;
+  height: 25px;
+  float: left;
+}
+/***** Library ****/
+.labels{
+  background-color: rgba(255,246,190,0.35);
+  min-height: 100px;
+}
+.labels ul{
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+}
+.labels ul li a{
+  float: left;
+  font-family: 'Seymour One', sans-serif;
+  font-size: 12px;
+  border-radius: 5px;
+  line-height: 20px;
+  background: #FFF;
+  text-decoration: none;
+  height: 35px;
+  width: 35px;
+  margin: 6px;
+  text-align: center;
+  border: rgba(255, 3, 16, 0.17) 0.2em solid;
+  color: #b50400;
+}
 @media print {
   body {
     margin-bottom: 0;
@@ -391,6 +372,6 @@ li.active {
   }
 
   .footer {
-    height: 300px;
+    height: 150px;
   }
 }

@@ -5,7 +5,7 @@ from decouple import config, Csv
 from dj_database_url import parse as db_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
@@ -131,9 +131,9 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test_db',
-        'USER': 'guest',
-        'PASSWORD': 'guestpassword',
+        'NAME': 'django_db',
+        'USER': 'djangouser',
+        'PASSWORD': 'djangouser',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -159,7 +159,7 @@ STATIC_URL = '/static/'
 
 # Setting static folder for site-wide files
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '../../static'),
+    os.path.join(BASE_DIR, '../static'),
 )
 
 # static root folder, where static files will be collected to
