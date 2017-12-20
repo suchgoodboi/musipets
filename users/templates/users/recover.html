@@ -1,0 +1,29 @@
+{% extends '_layouts/main.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Recover password{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-7 col-md-offset-1">
+      {% if form %}
+        <p>
+          Enter your email address or username.
+        </p>
+        {% crispy form %}
+      {% else %}
+        <p>
+          An email has just been sent to' <strong>{{ email }}</strong>.
+        </p>
+        <p>
+          Use the link in this email to set up a new password.
+        </p>
+        <p>
+          <a class="btn btn-primary" href="{% url 'meupet:index' %}" title="Back to home page">
+            Back to home page
+          </a>
+        </p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

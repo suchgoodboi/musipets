@@ -1,0 +1,40 @@
+{% load thumbnail %}
+
+<form class="form-horizontal" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <!-- ************* Заменить на группу ************************
+  <div class="form-group{% if form.name.errors %} has-error{% endif %}">
+    <label for="{{ form.name.id_for_label }}" class="col-sm-2 control-label">Group</label>
+    <div class="col-sm-10">
+      {{ form.name }}
+      {{ form.name.errors }}
+    </div>-->
+
+  <div class="form-group{% if form.name.errors %} has-error{% endif %}">
+    <label for="{{ form.name.id_for_label }}" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      {{ form.name }}
+      {{ form.name.errors }}
+    </div>
+  </div>
+
+  <div class="form-group{% if form.description.errors %} has-error{% endif %}">
+    <label for="{{ form.description.id_for_label }}" class="col-sm-2 control-label">Description</label>
+
+    <div class="col-sm-10">
+      {{ form.description }}
+      {{ form.description.errors }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" name="submit" class="btn btn-primary pull-right" value="
+    {% if pet %}
+      Save Changes
+    {% else %}
+      ADD song
+    {% endif %}
+    ">
+  </div>
+</form>

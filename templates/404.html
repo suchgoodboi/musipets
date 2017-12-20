@@ -1,0 +1,21 @@
+{% extends '_layouts/main.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+  <div class="col-md-12">
+    <div class="text-center">
+      <p>
+        Прости, но у меня лапки :с
+        Я не могу тебе помочь
+      </p>
+      <img class="img-thumbnail mb-40px" src="{% static 'img/404.jpg' %}" alt="Мне очень грустно">
+    </div>
+  </div>
+{% endblock %}
+
+{% block ga_log_not_found %}
+    var url = "/404/?url=" + window.location.pathname + window.location.search + "&from=" + document.referrer;
+    ga('send', 'pageview', url);
+{% endblock %}

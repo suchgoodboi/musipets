@@ -1,0 +1,40 @@
+{% extends '_layouts/main.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Registered Pet' %}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-9">
+
+      <h2>Obrigado!</h2>
+
+      <p>O cadastro será compartilhado automaticamente no <a href="https://www.facebook.com/kdmeubicho">Facebook</a>
+        e no <a href="https://twitter.com/kdmeubicho_">Twitter</a>! :)</p>
+
+      <p>Para visualizar o cadastro clique <a href="{% url 'meupet:detail' pet_slug %}">aqui</a>.</p>
+
+      <p>
+        Para aumentar ainda mais a rede de divulgação, sugerimos que você também
+        compartilhe o cadastro em suas redes sociais.</p>
+
+      <p>Você pode utilizar os botões abaixo para compartilhar no Facebook ou Twitter:</p>
+
+      <ul class="list-unstyled list-inline">
+        <li>
+          <a href="{{ facebook_url }}" target="_blank">
+            <img src="{% static 'img/facebook.png' %}" alt="Facebook"/>
+          </a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="{{ twitter_url }}" target="_blank">
+            <img src="{% static 'img/twitter.png' %}" alt="Twitter"/>
+          </a>
+        </li>
+      </ul>
+
+      <p>Boa sorte, estamos na torcida! <i class="c-red fa fa-heart"></i></p>
+    </div>
+  </div>
+{% endblock %}

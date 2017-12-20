@@ -1,0 +1,104 @@
+{% load  static compress meupet_tags %}
+<!DOCTYPE html>
+<html>
+<head lang="pt-br">
+  <meta charset="UTF-8">
+  <title>Musicat </title>
+  {% compress css %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/myStyles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans|Seymour+One" rel="stylesheet">
+  {% endcompress %}
+</head>
+<body>
+<div class="navbar" role="navigation"> <!-- наше меню -->
+  <div class="container">
+    <div class="navbar-brand-logo">
+      <a  href="{% url 'common:homepage' %}">
+      <img alt="Home" title = "Home" src="{% static 'img/cat.png' %}">
+      </a>
+      <a class="navbar-brand" href="{% url 'common:homepage' %}">
+        Musicat
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav ">
+        <li><a href="{% url 'meupet:index' %}">Библиотека аккордов</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'users:profile' %}">Profile</a></li>
+          <li><a href="{% url 'users:logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'users:create' %}">Sign Up</a></li>
+          <li><a href="{% url 'users:login' %}">Log In</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% block title %}{% endblock %}
+
+{% block page %}
+  <div class="container page">
+    <div class="row">
+      <!--{% if messages %}
+        <div class="col-md-12">
+          {% for message in messages %}
+            <div class="alert
+                {% if message.tags %}
+                  {% if 'error' in message.tags %}
+                      alert-danger
+                  {% else %}
+                      alert-{{ message.tags }}
+                  {% endif %}
+                {% endif %}" role="alert">
+              {{ message|safe }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      -->
+      {% block body %}
+        <div class="col-md-8 col-md-offset-2 ">
+          {% block content %}
+          {% endblock content %}
+        </div>
+      {% endblock body %}
+    </div>
+  </div>
+{% endblock %}
+
+<div class="footer hidden-print">
+  <div class="footer-body">
+    <div class="container">
+      <div class="row">
+          <h4 class="title-text">About</h4>
+          <p>Ми любим котиков, поставь пятюню, брат :)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% compress js %}
+  <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/lightbox.js' %}"></script>
+  <script src="{% static 'js/matchMedia.js' %}"></script>
+  <script src="{% static 'js/pets.js' %}"></script>
+  <!--{% if not debug %}
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5&appId=388312971328768  ";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+  {% endif %}-->
+{% endcompress %}
+{% block morescripts %}{% endblock %}
+</body>
+</html>

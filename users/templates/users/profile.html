@@ -1,0 +1,39 @@
+{% extends '_layouts/main.html' %}
+{% load  static %}
+
+{% block body %}
+<div class ="container">
+  <div class="container">
+  <img class = "profile-photo" src="{% static 'img/no-photo.png' %}">
+  <div class="info-block">
+    <div class ="page-block row">
+      <div class="name col-md-11">{{ object.first_name }} {{ object.last_name }}</div>
+      {% if user.is_authenticated and user.id == object.id %}
+      <a href="{% url 'users:edit' %}" class="btn btn-primary col-md-1">Edit</a>
+      {% endif %}
+    </div>
+    <div class="page-block">
+      <ul class = "user-box">
+        <li>
+          <a href="Favorites" >
+            <img class= "img-icon" src = "{% static 'img/favourite.png' %}">
+            Favorites
+          </a>
+        </li>
+        <li >
+          <a href="ADDed">
+            <img class= "img-icon" src = "{% static 'img/star.png' %}">
+            ADDed
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <div class =" container page-block">
+  <a href="{% url 'meupet:register' %}">Add track</a>
+  <h4>Добавленные треки</h4>
+  <!-- добавить добавленные-->
+  </div>
+</div>
+{% endblock %}

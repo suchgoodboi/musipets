@@ -1,0 +1,58 @@
+{% extends '_layouts/main.html' %}
+
+{% block title %}
+<div class="heading">
+  <h3 class="title-text text-center">Создай аккаунт</h3>
+</div>
+{% endblock%}
+{% block body %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group{% if form.first_name.errors %} has-error{% endif %}">
+      <label for="{{ form.first_name.id_for_label }}" class="control-label">Имя</label>
+      <div class="controls">
+        {{ form.first_name }}
+        {{ form.first_name.errors }}
+      </div>
+    </div>
+    <div class="form-group{% if form.last_name.errors %} has-error{% endif %}">
+      <label for="{{ form.last_name.id_for_label }}" class="control-label">Фамилия</label>
+      <div class="controls">
+        {{ form.last_name }}
+        {{ form.last_name.errors }}
+      </div>
+    </div>
+    <div class="form-group{% if form.email.errors %} has-error{% endif %}">
+      <label for="{{ form.email.id_for_label }}" class="control-label">Email</label>
+      <div class="controls">
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div>
+    </div>
+    <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+      <label for="{{ form.username.id_for_label }}" class="control-label">Логин</label>
+      <div class="controls">
+        {{ form.username }}
+        <div class="help-block">{{ form.username.help_text }}</div>
+        {{ form.username.errors }}
+      </div>
+    </div>
+    <div class="form-group{% if form.password1.errors %} has-error{% endif %}">
+      <label for="{{ form.password1.id_for_label }}" class="control-label">Пароль</label>
+      <div class="controls">
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+      </div>
+    </div>
+    <div class="form-group{% if form.password2.errors %} has-error{% endif %}">
+      <label for="{{ form.password2.id_for_label }}" class="control-label">Подтвердите пароль</label>
+      <div class="controls">
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" name="submit" class="btn btn-primary" value=Create>
+    </div>
+  </form>
+{% endblock body %}

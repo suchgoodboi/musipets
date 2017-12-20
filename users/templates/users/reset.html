@@ -1,0 +1,18 @@
+{% extends '_layouts/main.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Recover password{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 col-md-offset-1">
+      <p>
+        Enter a new password.
+      </p>
+      <p>
+        {% blocktrans %}If you forgot, your username is <strong>{{ username }}</strong>.{% endblocktrans %}
+      </p>
+      {% crispy form %}
+    </div>
+  </div>
+{% endblock %}

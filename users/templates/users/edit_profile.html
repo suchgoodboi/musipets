@@ -1,0 +1,46 @@
+{% extends '_layouts/base.html' %}
+{% load i18n crispy_forms_tags static %}
+
+{% block title %}{% trans 'Edit Profile' %}{% endblock %}
+
+{% block content %}
+  <div id="ajuda-facebook" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">{% trans 'Find your Facebook profile address' %}</h4>
+        </div>
+        <div class="modal-body">
+          <ol>
+            <li>
+              <p>{% trans 'On Facebook, find your name in the top navigation bar and click on it.' %}</p>
+
+              <p><img class="img-responsive" src="{% static 'img/kdmeubicho_nome.png' %}"
+                      alt="{% trans "Facebook's navigation bar" %}"></p>
+            </li>
+            <li>
+              <p>{% trans "After the page loads your profile address will be in your browser's address bar." %}</p>
+
+              <p><img class="img-responsive" src="{% static 'img/kdmeubicho_endereco.png' %}"
+                      alt="{% trans "Browser's address bar" %}"></p>
+            </li>
+            <li>
+              <p>{% trans 'Copy and paste the address in the form field' %}</p>
+
+              <p><img class="img-responsive" src="{% static 'img/kdmeubicho_form.png' %}"
+                      alt="{% trans 'Filled form' %}"></p>
+            </li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4>{% trans 'Your Profile' %}</h4>
+  {% crispy form %}
+{% endblock %}
