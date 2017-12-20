@@ -1,4 +1,4 @@
-{% load  static compress meupet_tags %}
+{% load  static compress %}
 <!DOCTYPE html>
 <html>
 <head lang="pt-br">
@@ -25,7 +25,7 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav ">
-        <li><a href="{% url 'meupet:index' %}">Библиотека аккордов</a></li>
+        <li><a href="{% url 'song:index' %}">Хранилище</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'users:profile' %}">Profile</a></li>
           <li><a href="{% url 'users:logout' %}">Logout</a></li>

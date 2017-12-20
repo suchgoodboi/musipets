@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 
-from meupet.models import Song
+from song.models import Song
 
 
 class SongEntrySitemap(Sitemap):
@@ -26,8 +26,8 @@ class PageSitemap(Sitemap):
         return [
             'common:homepage',
             'common:about',
-            'meupet:index',
-            'meupet:search',
+            'song:index',
+            'song:search',
         ]
 
     def location(self, item):

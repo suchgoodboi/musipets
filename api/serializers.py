@@ -5,7 +5,7 @@ from rest_framework.serializers import (
     StringRelatedField,
 )
 
-from meupet.models import Song, Group
+from song.models import Song, Group
 from users.models import OwnerProfile
 
 
@@ -37,7 +37,7 @@ class SongSerializer(ModelSerializer):
     # size = CharField(source='get_size', read_only=True)
 
     id = HyperlinkedRelatedField(
-        view_name='meupet:detail_by_pk',
+        view_name='song:detail_by_pk',
         read_only=True
     )
 

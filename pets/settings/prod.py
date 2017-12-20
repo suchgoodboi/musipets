@@ -48,7 +48,7 @@ THIRD_PARTS_APPS = (
 PROJECT_APPS = (
     'cities',
     'common',
-    'meupet',
+    'song',
     'users',
 )
 
@@ -90,7 +90,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
-                'meupet.context_processors.pets_count',
+                'song.context_processors.pets_count',
                 'users.context_processors.users_count',
             ],
             'loaders': [
@@ -144,7 +144,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-EN'
 
-TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 

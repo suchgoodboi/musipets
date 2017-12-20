@@ -1,0 +1,149 @@
+{% extends '_layouts/main.html' %}
+{% load static thumbnail %}
+
+<!--{% block metatags %}
+  <meta property="og:title" content="{{ song.name }}">
+  <meta property="og:description" content="{{ pet.description }}">
+  <meta property="og:url" content="{{ current_url }}">
+  <meta property="og:image"
+        content="http://www.cademeubicho.com{{ pet.profile_picture|thumbnail_url:'pet_thumb' }}">
+  <meta property="og:site_name" content="Cadê meu Bicho?">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pet.name }} | Cadê meu Bicho?">
+  <meta name="twitter:description" content="{{ pet.description }}">
+  <meta name="twitter:image:src"
+        content="http://www.cademeubicho.com{{ pet.profile_picture|thumbnail_url:'pet_thumb' }}">
+{% endblock %}-->
+
+{% block title %}{{ song.group }} - {{ song.name }}{% endblock %}
+
+{% block content %}
+  <div class="modal fade" id="delete_pet" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Delete Track</h4>
+        </div>
+
+        <div class="modal-body">
+          <p>Do you really want to erase?</p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+          <form action="{% url 'song:delete_pet' pet.slug %}" method="post" class="form-inline">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Delete"/>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <a href="{{ pet.profile_picture.url }}" data-lightbox="{{ pet.slug }}" data-title="{{ pet }}">
+        <img class="img-thumbnail" src="{{ pet.profile_picture|thumbnail_url:'pet_thumb' }}"
+             alt="{{ pet }}"/>
+      </a>
+      {% if user == pet.owner %}
+        <form class="form-horizontal" method="POST" enctype="multipart/form-data"
+              action="{% url 'meupet:upload_image' pet.slug %}">
+          {% csrf_token %}
+          <input name="pet_id" value="{{ pet.id }}" type="hidden">
+
+          <div class="form-group">
+            <label for="another_picture" class="control-label">Add Photo</label>
+            <input type="file" id="another_picture" name="another_picture">
+            <span class="help-block">Maximum image size is 8MB</span>
+          </div>
+          <div class="form-group">
+            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit Image}">
+          </div>
+        </form>
+      {% endif %}
+    </div>
+
+    <div class="col-md-7">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p>
+            <strong>Description:</strong><br/>
+            {{ pet.description }}
+          </p>
+
+          <p>
+            <strong>City:</strong><br/>
+            {{ pet.city|title }}
+          </p>
+
+          {% if pet.size %}
+            <p>
+              <strong>Size:</strong><br/>
+              {{ pet.get_size_display }}
+            </p>
+          {% endif %}
+
+          {% if pet.sex %}
+            <p>
+              <strong>Sex:</strong><br/>
+              {{ pet.get_sex_display }}
+            </p>
+          {% endif %}
+
+          {% if user == pet.owner %}
+            <div class="pull-right">
+              {% if not pet.found_or_adopted %}
+                <form action="{% url 'meupet:change_status' pet.slug %}" method="post" class="form-inline">
+                  {% csrf_token %}
+                  <input type="submit" class="btn btn-success" value="
+                    {% if pet.status == pet.MISSING %}
+                      {% trans 'Mark as found!' %}
+                    {% else %}
+                      {% trans 'Mark as adopted!' %}
+                    {% endif %}
+                  "/>
+                </form>
+              {% endif %}
+
+              <a href="{% url 'meupet:edit' pet.slug %}" class="btn btn-primary">{% trans 'Edit' %}</a>
+
+              <a href="{% url 'meupet:poster' pet.slug %}" class="btn btn-primary">{% trans 'Generate Poster' %}</a>
+
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_pet">
+                {% trans 'Delete Pet' %}
+              </button>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% if pet.photo_set.all %}
+      <div class="col-md-12">
+        <h3>{% trans 'More photos' %}</h3>
+
+        <div class="row">
+          {% for photo in pet.photo_set.all %}
+            <div class="col-md-3">
+              <a href="{{ photo.image.url }}" data-lightbox="{{ pet.slug }}" data-title="{{ pet }}">
+                <img class="img-thumbnail" src="{{ photo.image|thumbnail_url:'pet_thumb' }}"
+                     alt="{{ pet }}"/>
+              </a>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+              </div>
+              <div class="row">
+            {% endif %}
+          {% endfor %}
+          </div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

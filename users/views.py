@@ -42,7 +42,7 @@ class CreateUserView(CreateView):
     model = OwnerProfile
     form_class = RegisterForm
     template_name = 'users/create.html'
-    authenticated_redirect_url = reverse_lazy('meupet:index')
+    authenticated_redirect_url = reverse_lazy('song:index')
 
     msg = _('Your account has been successfully created, access <a href="{0}">'
             'this page</a> and register the pet :)')
@@ -57,14 +57,14 @@ class CreateUserView(CreateView):
         return super(CreateUserView, self).form_valid(form)
 
     def get_success_url(self):
-        url = reverse('meupet:register')
+        url = reverse('song:register')
         messages.success(self.request, self.msg.format(url))
         user = authenticate(
             username=self.request.POST.get('username'),
             password=self.request.POST.get('password1')
         )
         login(self.request, user)
-        return reverse('meupet:index')
+        return reverse('song:index')
 
 
 class EditUserProfileView(LoginRequiredMixin, UpdateView):
@@ -74,7 +74,7 @@ class EditUserProfileView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, _('Changes saved successfully.'))
-        return reverse('meupet:index')
+        return reverse('song:index')
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -96,7 +96,7 @@ def user_login(request):
                 if is_safe_url(redirect_to):
                     return HttpResponseRedirect(redirect_to)
 
-                return HttpResponseRedirect(reverse('meupet:index'))
+                return HttpResponseRedirect(reverse('song:index'))
     else:
         form = LoginForm()
     return render(request, 'users/login.html', {'form': form}, context)
@@ -104,7 +104,7 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('meupet:index'))
+    return HttpResponseRedirect(reverse('song:index'))
 
 
 class UserProfileView(LoginRequiredMixin, TemplateView):
@@ -113,7 +113,7 @@ class UserProfileView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(UserProfileView, self).get_context_data(**kwargs)
         context['object'] = self.request.user
-        context['pets'] = self.request.user.addSong.all()
+        context['pets'] = self.request.user.song_set.all()
         return context
 
 
@@ -123,7 +123,7 @@ class ProfileDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
-        context['pets'] = self.object.addSong.all()
+        context['pets'] = self.object.song_set.all()
         return context
 
 
@@ -132,6 +132,6 @@ def confirm_information(request):
     redirect to the correct view"""
     if request.user:
         if request.user.is_information_confirmed:
-            return HttpResponseRedirect(reverse('meupet:index'))
+            return HttpResponseRedirect(reverse('song:index'))
         else:
             return HttpResponseRedirect(reverse('users:edit'))

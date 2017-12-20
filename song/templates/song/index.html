@@ -1,0 +1,64 @@
+{% extends '_layouts/main.html' %}
+
+{% block title %}<div class="heading">
+  <h3 class="title-text text-center">Группы</h3>
+</div>
+{% endblock %}
+
+{% block body %}
+<!--
+<ul>
+    {% for label in labelsList %}
+  <li>
+    <a href="{{ label.get_absolute_url }}">
+      {{ label.headline}}
+    </a>
+  <li>
+{% endfor %}
+</ul>
+-->
+
+<div class="labels">
+<ul>
+  <li><a href="/song/0/">0</a></li>
+  <li><a href="/song/1/">1</a></li>
+  <li><a href="/song/2/">2</a></li>
+  <li><a href="/song/3/">3</a></li>
+  <li><a href="/song/4/">4</a></li>
+  <li><a href="/song/5/">5</a></li>
+  <li><a href="/song/6/">6</a></li>
+  <li><a href="/song/7/">7</a></li>
+  <li><a href="/song/8/">8</a></li>
+  <li><a href="/song/9/">9</a></li>
+  <li><a href="/song/a/">A</a></li>
+  <li><a href="/song/b/">B</a></li>
+  <li><a href="/song/c/">C</a></li>
+  <li><a href="/song/d/">D</a></li>
+  <li><a href="/song/e/">E</a></li>
+  <li><a href="/song/f/">F</a></li>
+  <li><a href="/song/g/">G</a></li>
+  <li><a href="/song/h/">H</a></li>
+  <li><a href="/song/i/">I</a></li>
+  <li><a href="/song/j/">J</a></li>
+  <li><a href="/song/k/">K</a></li>
+  <li><a href="/song/l/">L</a></li>
+  <li><a href="/song/m/">M</a></li>
+  <li><a href="/song/n/">N</a></li>
+  <li><a href="/song/o/">O</a></li>
+  <li><a href="/song/p/">P</a></li>
+  <li><a href="/song/q/">Q</a></li>
+  <li><a href="/song/r/">R</a></li>
+  <li><a href="/song/s/">S</a></li>
+  <li><a href="/song/t/">T</a></li>
+  <li><a href="/song/u/">U</a></li>
+  <li><a href="/song/v/">V</a></li>
+  <li><a href="/song/w/">W</a></li>
+  <li><a href="/song/x/">X</a></li>
+  <li><a href="/song/y/">Y</a></li>
+  <li><a href="/song/z/">Z</a></li>
+</ul>
+</div>
+{% block content %}
+  {% include '_partials/tracksList.html' %}
+{% endblock %}
+{% endblock body %}

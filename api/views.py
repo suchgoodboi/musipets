@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from api import serializers
-from meupet.models import Song, Group
+from song.models import Song, Group
 
 
 class GroupList(generics.ListAPIView):
